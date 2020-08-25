@@ -1,5 +1,6 @@
 package com.example.myfirst;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -15,13 +16,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
-    private Button btn_jump;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private Button btn_jump_java;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        btn_jump_java = this.findViewById(R.id.btn_jump);
+
+        btn_jump_java.setOnClickListener(this);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -91,5 +96,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(this, Activity2.class);
+        startActivity(intent);
     }
 }
